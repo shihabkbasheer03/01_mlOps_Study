@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template,request
 
 """
 It creates an instance of the Flask class, 
@@ -20,5 +20,12 @@ def index():
 def about():
     return render_template('about.html')
 
+@app.route("/form", method=['GET','POST'])
+def form():
+    if request.method=='POST':
+        name=request.method['name']
+        return f'Hello {name}!'
+    return render_template('form.html')
+
 if __name__ == "__main__":
-    app.run(debug=True, host='192.168.1.99')
+    app.run(debug=True)
