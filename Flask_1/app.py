@@ -20,9 +20,9 @@ def index():
 def about():
     return render_template('about.html')
 
-@app.route("/form", method=['GET','POST'])
+@app.route("/form", methods=['GET','POST'])
 def form():
-    if request.methods=='POST':
+    if request.method=='POST':
         name=request.form['name']
         return f'Hello {name}!'
     return render_template('form.html')
